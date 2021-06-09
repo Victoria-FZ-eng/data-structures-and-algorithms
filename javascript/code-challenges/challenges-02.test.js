@@ -115,17 +115,23 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
+
   let evenoddArr = arr.map((num)=>{
-    if(Number.isInteger(num/2) === true){
+    if (!(num%2) && typeof num === 'number') {
       return 'even';
     }
-    else if (Number.isInteger(num/n) === false){
+    else if ( (num%2) && typeof num === 'number') {
       return 'odd';
     }
-    else {return 'N/A'}
+    else (  typeof num !== 'number' ) ;{
+      return 'N/A';
+    }
+   
   });
+
   return evenoddArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
