@@ -124,7 +124,7 @@ CHALLENGE 7 - Stretch Goal
 
 Write a function named getStatName that is an extension of your getBaseStatGreaterThan function from challenge 7. For this function, extend your solution from challenge 7 to only return the name of the stat, rather than the entire stat object.
 
-For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 'special-attack'].
+For example, ge(snorlaxtStatNameData.stats, 50) will return ['special-defense', 'special-attack'].
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
