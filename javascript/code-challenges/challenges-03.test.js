@@ -128,7 +128,12 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  let newArr = arr.filter((item)=>{
+    if(item.baseStat > minBaseStat){
+      return item.stat.name;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -181,16 +186,16 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-let newArr = arr.filter((property)=>{
-  if (property.children){
-    (delete property.children);
-  }
-  else {
-    return property;
-  }
-});
-return newArr;
-
+  let newArr = arr.filter((obj)=>{
+    if (obj.children){
+      
+      return (false);
+    }
+    else {
+      return obj;
+    }
+  });
+  return (newArr);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -305,7 +310,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return an array containing characters who do not have children', () => {
     expect(getCharactersWithoutChildren(characters)).toStrictEqual([ { name: 'Sansa', spouse: 'Tyrion', house: 'Stark' }, { name: 'Jon', spouse: null, house: 'Snow' } ]);
     expect(getCharactersWithoutChildren(characters).length).toStrictEqual(2);
