@@ -130,7 +130,7 @@ For example, ge(snorlaxtStatNameData.stats, 50) will return ['special-defense', 
 const getStatName = (arr, minBaseStat) => {
   let newArr = arr.filter((item)=>{
     if(item.baseStat > minBaseStat){
-      return item.stat.name;
+      return item[stat.name];
     }
   });
   return newArr;
@@ -207,7 +207,18 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+  let filteredArr = arr.filter((item)=>{
+    if (typeof item === 'number' ){
+    return true;}
+  })
+  let mapArr = filteredArr.map((item)=>{
+    if (!(item%2))
+    return 'even';
+    else if (item%2)
+      return 'odd';
+    
+  })
+  return mapArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -317,7 +328,7 @@ describe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should remove non-integers and return "even" or "odd', () => {
     expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
     expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
