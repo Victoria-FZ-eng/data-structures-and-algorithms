@@ -130,10 +130,13 @@ For example, ge(snorlaxtStatNameData.stats, 50) will return ['special-defense', 
 const getStatName = (arr, minBaseStat) => {
   let newArr = arr.filter((item)=>{
     if(item.baseStat > minBaseStat){
-      return item[stat.name];
-    }
-  });
-  return newArr;
+      return item;
+    };
+    });
+  let newName = newArr.map((item)=>{
+    return item.stat.name;
+  })
+  return newName;
 };
 
 /* ------------------------------------------------------------------------------------------------
