@@ -133,7 +133,7 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  let getHouses= arr.map((obj)=>{
+  arr.map((obj)=>{
     houses.push(obj.house) ;
   })
   return houses;
@@ -152,8 +152,21 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-};
+  let childrenOrNo = arr.filter((obj)=>{
+   if (obj.name === character){
+     return obj;
+    }
+  });
+  let data =Object.values(childrenOrNo);
+ let trueOrFalse =data.find((values)=>{
+   if (values.children != undefined){
+     return true;
+   }else{
+     return false;
+   }
+    }) ;
+    return trueOrFalse; 
+ };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
