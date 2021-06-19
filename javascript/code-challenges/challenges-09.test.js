@@ -9,7 +9,7 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  maxValue = () => arr.reduce((max, currentValue) => Math.max(max, currentValue), arr[0]);
+  const maxValue = arr.reduce((x, y) => Math.max(x, y))
   return maxValue;
 };
 
@@ -26,7 +26,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 };
 
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,7 +38,20 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-  // Solution code here...
+//   let checkedArr= Object.values(obj).map((val)=> {
+//     if (val === value){
+//       return "true";
+//     }
+//   else{
+//     return "false";
+//   }})
+//  return checkedArr;
+if (Object.values(obj) == value){
+        return true;
+      }
+    else{
+      return false;
+    }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,7 +74,10 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-  // Solution code here...
+  let joinObj=Object.entries(obj).map((arr)=>{
+  return arr.join(": ");
+});
+return joinObj;
 };
 
 
@@ -117,7 +133,9 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.map((obj)=>{
+    houses.push(obj.house) ;
+  })
   return houses;
 };
 
@@ -134,9 +152,21 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
-};
+  let childrenOrNo = arr.filter((obj)=>{
+   if (obj.name === character){
+     return obj;
+    }
+  });
+  let data =Object.values(childrenOrNo);
+ let trueOrFalse =data.find((values)=>{
+   if (values.children != undefined){
+     return true;
+   }else{
+     return false;
+   }
+    }) ;
+    return trueOrFalse; 
+ };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
