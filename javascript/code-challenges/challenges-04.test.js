@@ -173,7 +173,14 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  let sortByLastName= arr.sort((persona, personb)=>{
+    if (persona.lastName < personb.lastName){
+      return -1;
+    }else{
+      return 1
+    }
+  })
+  return sortByLastName;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -187,7 +194,27 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  let sort= arr.sort((persona, personb)=>{
+
+    if (persona.lastName < personb.lastName){
+      return -1;
+    }else if (persona.lastName > personb.lastName){
+      return 1;
+    }else {
+      if (persona.firstName < personb.firstName){
+      return -1;
+    }else if (persona.firstName > personb.firstName){
+      return 1;
+    }else {
+
+      if (persona.age < personb.age){
+      return -1;
+    }else if (persona.age > personb.age){
+      return 1;
+    }
+    }}
+  });
+  return sort;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -213,8 +240,17 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  const daysNum = {
+    'Monday': 1,'Tuesday': 2,'Wednesday': 3,'Thursday': 4,'Friday': 5,'Saturday': 6,
+    'Sunday': 7
+ };
+let sorted=arr.sort((a, b) => {
+  return daysNum[a.dayOfWeek] - daysNum[b.dayOfWeek];});
+ 
+
+  return sorted;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 13 - Stretch Goal
@@ -227,7 +263,18 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
+  const daysNum = {
+    'Monday': 1,'Tuesday': 2,'Wednesday': 3,'Thursday': 4,'Friday': 5,'Saturday': 6,
+    'Sunday': 7
+ };
+let sorted=arr.sort((a, b) => {
+  if(daysNum[a.dayOfWeek] !== daysNum[b.dayOfWeek]){
+  return daysNum[a.dayOfWeek] - daysNum[b.dayOfWeek]
+  }else{
+    return (a.end-a.start)-(b.end-b.start);
+  }
+  });
+  return sorted;
 };
 
 /* ------------------------------------------------------------------------------------------------
