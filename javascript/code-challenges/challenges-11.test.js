@@ -94,12 +94,23 @@ const divisibleByFiveTwoToThePower = (input) => {
     let specificNum=input[i].filter((num)=> typeof num === "number" && num%5 ===0 );
     newArr.push(specificNum);
   }
-  powerArr=[];
+  let powerArr=[];
   for(let i=0; i< newArr.length ; i++){
     let power=newArr[i].map((num)=>{return Math.pow(2, num)});
     powerArr.push(power);
   }
   return powerArr;
+  // let allArrays=[];
+  // input.forEach(element=>{
+  //   let array=[];
+  //   element.forEach(item=>{
+  //     if(typeof(item)=='number'&& item%5==0){
+  //       array.push(Math.pow(2,item));
+  //     }
+  //   })
+  //   allArrays.push(array);
+  // })
+  // return allArrays;
 
 };
 
