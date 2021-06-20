@@ -312,7 +312,7 @@ const extractChildren = (arr) => {
   })
   let children= containsA.reduce((acc, obj)=> {
     if(obj.children != undefined){
-    acc=acc+ obj.children;}
+    acc.push(obj.children);}
     return acc;
   },[]);
   return children;
