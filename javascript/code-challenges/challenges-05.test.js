@@ -282,7 +282,14 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  let name = arr.reduce((item)=>{
+    if(item.stat.name == statName){
+      return item;
+    }else {
+      return null;
+    }
+  })
+  return name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -296,7 +303,19 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  // Solution code here...
+  let regex = /a/g;
+  let containsA= arr.filter((obj)=>{
+    if (regex.test(obj.name)){
+      console.log(obj.name);
+      return obj;
+    }
+  })
+  let children= containsA.reduce((acc, obj)=> {
+    if(obj.children != undefined){
+    acc=acc+ obj.children;}
+    return acc;
+  },[]);
+  return children;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -371,13 +390,13 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return any stats that match the input', () => {
     expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
     expect(extractChildren(characters).length).toStrictEqual(10);
