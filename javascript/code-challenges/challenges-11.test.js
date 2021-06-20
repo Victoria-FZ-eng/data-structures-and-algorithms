@@ -89,17 +89,28 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
+  // let newArr=[];
+  // for(let i=0; i< input.length ; i++){
+  //   let specificNum=input[i].filter((num)=> typeof num === "number" && num%5 ===0 );
+  //   newArr.push(specificNum);
+  // }
+  // let powerArr=[];
+  // for(let i=0; i< newArr.length ; i++){
+  //   let power=newArr[i].map((num)=>{return Math.pow(2, num)});
+  //   powerArr.push(power);
+  // }
+  // return powerArr;
+
   let newArr=[];
   for(let i=0; i< input.length ; i++){
-    let specificNum=input[i].filter((num)=> typeof num === "number" && num%5 ===0 );
+    let specificNum=input[i]
+    .filter((num)=> typeof num === "number" && num%5 ===0 )
+    .map((num)=>{return Math.pow(2, num)});
     newArr.push(specificNum);
   }
-  let powerArr=[];
-  for(let i=0; i< newArr.length ; i++){
-    let power=newArr[i].map((num)=>{return Math.pow(2, num)});
-    powerArr.push(power);
-  }
-  return powerArr;
+  return newArr;
+
+
   // let allArrays=[];
   // input.forEach(element=>{
   //   let array=[];
@@ -178,19 +189,33 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  let findData = data.filter((obj)=>{
-   if( obj.gender !== 'n/a'){
-     return obj;
+//   let findData = data.filter((obj)=>{
+//    if( obj.gender !== 'n/a'){
+//      return obj;
+//    }
+//   });
+//   let findNames= findData.map((obj)=>obj.name);
+//   let filterNames= findNames.filter((name)=>{
+//     if(name != undefined){
+//       return name;
+//     }
+//   })
+//  let result= filterNames.join(" and ");
+//  return result;
+let findData = data
+.filter((obj)=>{
+  if( obj.gender !== 'n/a'){
+    return obj;
+  }
+ })
+ .map((obj)=>obj.name)
+ .filter((name)=>{
+   if(name != undefined){
+     return name;
    }
-  });
-  let findNames= findData.map((obj)=>obj.name);
-  let filterNames= findNames.filter((name)=>{
-    if(name != undefined){
-      return name;
-    }
-  })
- let result= filterNames.join(" and ");
- return result;
+ })
+.join(" and ");
+return findData;
 };
 
 /* ------------------------------------------------------------------------------------------------
