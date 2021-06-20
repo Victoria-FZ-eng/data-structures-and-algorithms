@@ -235,8 +235,9 @@ const isPrime = (value) => {
 const countPrimeNumbers = (arr) => {
   let primeSum= arr.reduce((acc,item)=>{
     if(isPrime(item)){
-      acc= acc+item;
+      acc= acc+1;
     }
+    return acc;
   },0);
   return primeSum;
 };
