@@ -64,7 +64,15 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  let arr  = str.split("");
+  let odd =[];
+  for (let i = 0 ; i < arr.length ; i++){
+   if((i)%2 !== 0){
+     odd.push(arr[i]);
+  }
+  }
+  
+  return odd.join("");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,10 +83,16 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   let happy = arr.filter((str)=>{
+    if(str.includes(':)')){
     
-    return str.includes(':)');
+    return str};
   });
-  return happy;
+  if (arr.length === happy.length){
+    return true;
+  }else{
+    return false;
+  }
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
