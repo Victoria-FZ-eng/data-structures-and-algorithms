@@ -303,10 +303,12 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  let regex = /a/g;
+  let regex = /a/;
+ 
   let containsA= arr.filter((obj)=>{
+   // console.log(`see name :${obj.name}`);
     if (regex.test(obj.name)){
-      console.log(obj.name);
+      console.log(`passed name :${obj.name}`);
       return obj;
     }
   })
@@ -315,8 +317,9 @@ const extractChildren = (arr) => {
     acc.push(obj.children);}
     return acc;
   },[]);
-  return children;
+  return children.flat(Infinity);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
