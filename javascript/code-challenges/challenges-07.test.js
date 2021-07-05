@@ -188,8 +188,15 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
- const odd= arr.filter((num)=>num%2 !== 0);
-  return odd;
+  var out = 0; 
+    for (var i = 0; i < arr.length; i++) {
+        if ((arr[i] % 2)) {
+            arr[out++] = arr[i]; 
+        }
+    }
+    arr.length = out;
+    return arr;
+ 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -228,7 +235,8 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = (str) => {
   let total = 0;
-  // Solution code here...
+let array = str.replace(/, +/g, ",").split(",").map(Number);
+total =  array.reduce((a, b) => a + b, 0);
   return total;
 };
 
@@ -242,7 +250,7 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = (str) => {
-  // Solution code here...
+  return str.replace(/[aeiou]/ig,'');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -256,7 +264,10 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 const extractVowels = (str) => {
-  // Solution code here...
+  let arr = [];
+  arr.push(str.replace(/[aeiou]/ig,''));
+  arr.push(str.split("").filter(letter => /^[aeiou]/i.test(letter)).sort().join(''));
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
